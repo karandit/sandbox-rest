@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * REST Controller which provides data about download statistics.
+ * 
+ * @author Karandi Tamas
+ */
 @RestController
 public class StatController {
 	
@@ -28,12 +33,18 @@ public class StatController {
 	  System.out.println("StatController.initIt()");
 	}
 	
+	/**
+	 * @return statistics about downloads by time
+	 */
 	@RequestMapping(value = "/byTime", method = RequestMethod.GET)
 	List<LogEntryDate> byTime() {
 		List<LogEntryDate> found = logEntryDateRepository.findAll();
 		return found;
 	}
 	
+	/**
+	 * @return statistics about downloads by domain
+	 */
 	@RequestMapping(value = "/byDomain", method = RequestMethod.GET)
 	List<DestinationHost> byDomain() {
 		List<DestinationHost> found = destinationHostrepository.findAll();
