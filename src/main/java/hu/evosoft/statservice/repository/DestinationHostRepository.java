@@ -16,8 +16,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DestinationHostRepository {
 
-	@Autowired
 	private MongoOperations mongoOperations;
+	
+	@Autowired
+	public void setMongoOperations(MongoOperations mongoOps) {
+		this.mongoOperations = mongoOps;
+	}
 	
 	public List<DestinationHost> findAll() {
 		return mongoOperations.findAll(DestinationHost.class);
